@@ -44,25 +44,36 @@ def delete_emp(request, id):
 def download_vcf(request, id):
     # retrieve the form data using the pk parameter
     form_data = Entry.objects.get(id=id)
+    
+    # Create a new vCard object
+    card = vobject.vCard()
 
-    # create a vCard object using the vobject package
-    vcard = vobject.vCard()
-    vcard.add('fn')
-    vcard.fn.value = form_data.first_name
-    vcard.add('ln')
-    vcard.ln.value = form_data.last_name
-    vcard.add('email')
-    vcard.email.value = form_data.email
-    vcard.add('phone')
-    vcard.phone.value = form_data.phone
-    vcard.add('company')
-    vcard.company.value = "Atrina Technologies"
+    # Set the first name field
+    fullname = form_data.first_name +" "+form_data.last_name
+    card.add('fn')
+    card.fn.value = fullname
+    # Set the email field
+    card.add('email')
+    card.email.value = form_data.email
 
+    # Set the company field
+    card.add('org')
+    card.org.value = ['Atrina Technologies']
+
+    # Set the phone field
+    card.add('tel')
+    card.tel.value = form_data.phone
+
+    #Set the image field
+   
+    # photo_data = form_data.photo.read()
+    # card.add('photo')
+    # card.photo.value = photo_data
 
     # generate the VCF file as a string
-    vcf_file = vcard.serialize()
+    vcf_file = card.serialize()
 
     # create an HTTP response with the VCF file as content
     response = HttpResponse(vcf_file, content_type='text/vcard')
-    response['Content-Disposition'] = f'attachment; filename="{form_data.first_name}.vcf"'
+    response['Content-Disposition'] = f'attachment; filename="{fullname}.vcf"'
     return response
