@@ -75,7 +75,7 @@
             </thead>
             <tbody>
                 {% for item in queryset%}
-
+                
                 <tr>   
                    <td>{{item.id}}</td>
                     <td>{{item.first_name }}</td>
@@ -92,7 +92,9 @@
                 <tr>
                     <td colspan="3">No items found.</td>
                 </tr> {% endcomment %}
-                
+                {% if item.id %}
+                      
+                {%endif%}    
            
             {% endfor %}
             <tr>
@@ -112,7 +114,14 @@
     </div>
         {% endfor %} {% endcomment %}
     <!-- Add Bootstrap JS script here -->
-    
+    {% for item in queryset%}
+                {% if item.qr_code %}
+                <button style="display: flex; margin:1% 0 " id= "visit"class="btn btn-primary" 
+                onclick="window.location.href = '{% url "visitcard" id=item.id %}';">
+                    Download Visiting Card
+                </button>
+                {% endif%}
+    {% endfor %}
     {% if data.id %}
     <button id= "visit"class="btn btn-primary" 
     onclick="window.location.href = '{% url "visitcard" id=data.id %}';">
