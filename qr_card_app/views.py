@@ -3,7 +3,7 @@ from django.template.loader import get_template
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponse
-from django_ical.views import ICalFeed
+
 import vobject
 from django.contrib.auth.decorators import login_required
 from .forms import EntryForm
@@ -15,7 +15,7 @@ import imgkit
 # import wkhtmltopdf
 from django.template.loader import render_to_string
 from django.conf import settings
-from html2image import Html2Image
+# from html2image import Html2Image
 
 
 from django.contrib.auth import authenticate, login, logout
