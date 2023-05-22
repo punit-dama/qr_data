@@ -5,4 +5,5 @@ class EntryForm(forms.ModelForm):
 
     class Meta:
         model = Entry
-        fields = "__all__"
+        fields = ['first_name', 'last_name', 'designation', 'email', 'phone', 'linkedin', 'photo']
+       

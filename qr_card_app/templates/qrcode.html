@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/qrcode.css'%}">
+    <title>Metro</title>
+</head>
+<body>
+    <div class="containerBx">
+        <div class="formBx">
+            <div class="formInnerBx">
+                <div class="logo">
+                    <img src="{%static 'css/icons/metro-brands-logosmall.png'%}" alt="Metro">
+                </div>
+                <div class="formDiv">
+                    <img src="{{qr.qr_code.url}}" alt="QR Code">
+                   <div> <a class="qrData" href="{{url}}">Visiting Card</a></div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+</body>
+</html>
+

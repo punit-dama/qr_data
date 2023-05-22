@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-c%10bn%)b8o+ly96nuwv300ac5xfp*n6a+!yej5b51k*yd=v68
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# "https://punitdama7.pythonanywhere.com/", "127.0.0.1"
 
 
 # Application definition
@@ -69,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'qr_card.wsgi.application'
+LOGIN_URL = 'login'
 
 
 # Database

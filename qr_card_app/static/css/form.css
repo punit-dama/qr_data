@@ -1,0 +1,101 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.myButton{
+font-size: large;
+}
+
+
+.containerBx {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("./bg.png");
+    background-position: inherit;
+    background-size: cover;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 80px;
+}
+
+ .formBx {
+    width: 60%;
+    background: #fff;
+    height: 90%;
+    padding: 25px;
+    border-radius: 5px;
+}
+.formInnerBx {
+    border: 1px solid #545559;
+    height: 100%;
+    border-radius: 5px;
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+.logo img {
+    width: 200px;
+}
+.formDiv {
+    display: flex;
+    justify-content: center;
+}
+.formDiv form {
+    width: 80%;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+}
+.row .col label {
+    font-size: 15px;
+    color: #55565A;
+    margin-bottom: 10px;
+}
+.row .col input {
+    padding: 8px;
+    font-size: 20px;
+    width: 300px;
+    border: 1px solid #545559;
+    border-radius: 5px;
+}
+::-webkit-file-upload-button {
+    display: none;
+}
+.inputFile {
+    padding: 8px;
+    font-size: 18px;
+    width: 300px;
+    border: 1px solid #545559;
+    border-radius: 5px;
+    background: #56575B;
+    color: #fff;
+    cursor: pointer;;
+}
+.submitBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.submitBtn button {
+    background: #000;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 5px;
+    width: 45%;
+    padding: 12px 0;
+    cursor: pointer;
+}

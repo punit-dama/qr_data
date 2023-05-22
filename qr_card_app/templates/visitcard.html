@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .business-card {
+      width: 1098px;
+      height: 648px;
+      background-color: #ffffff;
+      border: 1px solid #000000;
+      padding: 20px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    .business-card h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .business-card p {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="business-card">
+    <h1>{{ data.first_name}} {{data.last_name}}</h1>
+    <p>{{ data.designation }}</p>
+    <p>{{ data.company_name }}</p>
+    <p>{{ data.phone }}</p>
+    <p>{{ data.email }}</p>
+    {% comment %} <p><img src="{{data.qr_code.url}}"></p> {% endcomment %}
+  </div>
+</body>
+</html>

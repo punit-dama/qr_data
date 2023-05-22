@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/qrcode.css'%}">
+    <title>Metro</title>
+</head>
+<body>
+    <div class="containerBx">
+        <div class="formBx">
+            <div class="formInnerBx">
+                <div class="logo">
+                    <img src="{%static 'css/icons/metro-brands-logosmall.png'%}" alt="Metro">
+                </div>
+                <div class="formDiv">
+                  
+                    <div style="margin:20%;display: flex;text-align:center"> <a href="{% url "form" %}"> <button style="background-color: #c2fbd7;
+                        border-radius: 100px;
+                        box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+                        color: green;
+                        cursor: pointer;
+                        display:inline-block;
+                        font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+                        padding: 7px 20px;
+                        text-align: center;
+                        text-decoration: none;
+                        transition: all 250ms;
+                        border: 0;
+                        font-size: 16px;
+                        user-select: none;
+                        -webkit-user-select: none;
+                        touch-action: manipulation;" role="button"> Form</button></a>
+                       
+                       
+
+                  
+                       <a href="{% url "iadmin" %}"> <button style="background-color: #c2fbd7;
+                        border-radius: 100px;
+                        box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+                        color: green;
+                        cursor: pointer;
+                        display:inline-block;
+                        font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+                        padding: 7px 20px;
+                        text-align: center;
+                        text-decoration: none;
+                        transition: all 250ms;
+                        border: 0;
+                        font-size: 16px;
+                        user-select: none;
+                        -webkit-user-select: none;
+                        touch-action: manipulation;" role="button"> Admin Panel</button></a>
+                       </div>
+                       </div>
+                       </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+</body>
+</html>
+

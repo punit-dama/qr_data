@@ -1,16 +1,80 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <link rel="stylesheet" href="{%static 'css/form.css'%}">
+    <title>Metro</title>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="containerBx">
+        
+        {% comment %} <div style = "display:flex;color: blanchedalmond;"> <button style ="color:black;background-color: #FFCCCB" value ="Admin Panel" href= "{% url "iadmin" %}">Admin panel</button></div> {% endcomment %}
+        <div class="formBx"> 
+            <div class="formInnerBx">
+               
+                <div class="logo">
+                    <img src="{%static 'css/icons/metrobrandslogobig.png'%}" alt="Metro">
+                </div>
+               <div class="formDiv">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <div class="col">
+                            <label for="">Your FirstName</label>
+                            {{form.first_name}}
+                            
+                        </div>
+                        <div class="col">
+                            <label for="">Your LastName</label>
+                           {{form.last_name}}
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">Your Designation</label>
+                            {{form.designation}}
+                            
+                        </div>
+                        <div class="col">
+                            <label for="">Your Email</label>
+                            {{form.email}}
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">Your Phone</label>
+                            {{form.phone}}
+                            
+                        </div>
+                        <div class="col">
+                            <label for="">Your Linkedln</label>
+                            {{form.linkedin}}
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">Your Image</label>
+                            <input type="file" class="inputFile" name="photo" accept="image/*" required="" id="id_photo">
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="submitBtn">
+                        <button>Submit</button>
+                    </div>
+                </form>
+               </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/landing2.css'%}">
+    <title>Metro Card</title>
+</head>
+<body>
+    <div class="containerBx">
+        <div class="innerBx">
+            <div class="contentBx">
+                <div class="logo">
+                    <img src="{%static 'css/icons/metrobrandslogobig.png'%}" alt="">
+                </div>
+                <div class="profile">
+                    <h1>{{form_data.first_name}} {{form_data.last_name}}</h1>
+                    <p>{{form_data.designation}}</p>
+                    <div class="profilePic">
+                        <img src="{{form_data.photo.url}}" alt="Photo">
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="address">
+                        <span class="head"><img src="{%static 'css/icons/pin.png'%}" width="25" height="30" alt="">Address</span>
+                        <h2>Metro Brands</h2>
+                        
+                        <p> 401, Kanakia Zillion,</p>
+                            <p>LBS Marg & CST Road,</p>
+                                <p>Kurla West, Junction,</p>
+                                    <p> Mumbai - 400077, India.</p>
+                        
+                    </div>
+                    {% comment %} <div class="mobile">
+                        <span class="head"><img src="{%static 'css/icons/phone.png'%}" alt="">Mobile No</span>
+                        <span> <a href="tel:+91{{form_data.phone}}">+91 {{form_data.phone}}</a></span>
+                    </div> {% endcomment %}
+                    <div class="email">
+                        <span class="head"><img src="{%static 'css/icons/mail.png'%}" alt=""> Email</span>
+                        <span> <a href="mailto:{{form_data.email}}">{{form_data.email}}</a></pan>
+                    </div>
+                    <div class="social">
+                        <ul>
+                            <li><a href="https://metrobrands.com/" target="_blank"><img src="{%static 'css/icons/Internet.png'%}"></a></li>
+                            <li><a href="{{form_data.linkedin}}" target="_blank"><img src="{%static 'css/icons/LinkedIn.png'%}"></a></li>
+                            <li><a href="https://www.google.com/maps/dir/19.0974729,72.8869815/metro+brands+address+mumbai/@19.0868992,72.8732869,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3be7c908c7e9a03b:0x44a3393b8f651496!2m2!1d72.8761016!2d19.0754097" target="_blank"><img src="{%static 'css/icons/map.png'%}"></a></li>
+                            <li><img src="{%static 'css/icons/Share.png'%}"></li>
+                            <li><a href="{% url 'download_vcf' id=form_data.id %}"><img src="{%static 'css/icons/vcf.png'%}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

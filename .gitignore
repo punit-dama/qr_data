@@ -1,2 +1,4 @@
 /venv
 /qr_card_app/__pycache__
+/qr_card_app/migrations/
+/qr_card/__pycache__

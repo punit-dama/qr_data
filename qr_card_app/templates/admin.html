@@ -1,0 +1,126 @@
+<!-- templates/my_page.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .search-bar {
+            width: 200px;
+        }
+        .options-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+        }
+        .table, th, td {
+            border: 4px solid black;
+            border-style:dashed;
+           text-align: center;
+         }
+        .table{
+               border: 4px solid black;
+               
+              text-align: center;
+            }
+         </style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1 class="text-center mt-4">Generate Visiting Card</h1>
+        <div style="display:flex; justify-content:end"><a href="{% url 'logout' %}" class="btn btn-primary">Logout</a></div>
+        <div class="row">
+            <!-- Search Bar -->
+            <div class="col-md-4 mb-4">
+                <form action="{% url 'search' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" name="search_query" class="form-control search-bar" placeholder="Search..." required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Options -->
+            <div class="col-md-8 mb-4">
+                <div class="options-buttons">
+                    &nbsp;
+                    {% for item in queryset%}
+                    <a href="{% url 'withmobile' id=item.id %}" class="btn btn-primary"> With Mobile</a>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <a href="{% url 'withoutmobile' id=item.id %}" class="btn btn-primary">Without Mobile</a>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                   
+                    {% endfor %}    
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Link</th>
+                    <th scope="col">QR Code</th>
+                    {% comment %} <th scope="col">Download</th> {% endcomment %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in queryset%}
+
+                <tr>   
+                   <td>{{item.id}}</td>
+                    <td>{{item.first_name }}</td>
+                    {% if item.qr_code %}
+                        <td><a href="{{link}}">{{chost}}{{link}}</a></td>
+                        <td><img src="{{item.qr_code.url}}"></td>
+                    {% else %}
+                        <td>X</td>
+                        <td>X</td>
+                </tr>       
+                    {% endif%}
+                
+                {% comment %} {% empty %}
+                <tr>
+                    <td colspan="3">No items found.</td>
+                </tr> {% endcomment %}
+                
+           
+            {% endfor %}
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.first_name }}</td>    
+                <td><a href="{{url}}">{{host}}{{url}}</a></td>
+                <td><img src="{{data.qr_code.url}}"></td>
+               
+                {% comment %} <td><div style="display:flex"> <a href="#" class="btn btn-primary"> Download Visiting card</a></div></td> {% endcomment %}
+            </tr>
+            
+            </tbody>
+        </table>
+        {% comment %} {% for item in queryset%} {% endcomment %}
+        {% comment %} {% for i in queryset%}
+        <div style="display:flex; "> <a href="{% url "visitcard" id=i.id%}" class="btn btn-primary" disabled> Download Visiting card</a></div>
+    </div>
+        {% endfor %} {% endcomment %}
+    <!-- Add Bootstrap JS script here -->
+    
+    {% if data.id %}
+    <button id= "visit"class="btn btn-primary" 
+    onclick="window.location.href = '{% url "visitcard" id=data.id %}';">
+        Download Visiting Card
+    </button>
+    {%endif%}
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
