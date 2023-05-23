@@ -3,7 +3,7 @@ from django.template.loader import get_template
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponse
-
+from PIL import Image
 import vobject
 from django.contrib.auth.decorators import login_required
 from .forms import EntryForm
@@ -11,7 +11,7 @@ from .models import Entry
 from django.core.files.base import ContentFile
 from io import BytesIO
 import base64
-import imgkit
+# import imgkit
 # import wkhtmltopdf
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -20,6 +20,7 @@ from django.conf import settings
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
+
 # app_name = "qr_card_app"
 
 
@@ -46,6 +47,7 @@ def logout_view(request):
     # Redirect to a success page.
     return redirect('login')
 
+@login_required(login_url='login')
 def index_view(request):
     return render(request,'index.html')
 
@@ -59,7 +61,7 @@ def form_view(request):
         qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
         qr.add_data(request.build_absolute_uri(url))
         qr.make(fit=True)
-        qr_image = qr.make_image()
+        qr_image = qr.make_image(fill_color = "#cb011b")
         buffer = BytesIO()
         qr_image.save(buffer, format='PNG')
         # Create a ContentFile object from the buffer
@@ -177,7 +179,7 @@ def withmobile(request,id):
     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
     qr.add_data(request.build_absolute_uri(url))
     qr.make(fit=True)
-    qr_image = qr.make_image()
+    qr_image = qr.make_image(fill_color="#cb011b")
     buffer = BytesIO()
     qr_image.save(buffer, format='PNG')
     # Create a ContentFile object from the buffer
@@ -202,7 +204,7 @@ def withoutmobile(request,id):
     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
     qr.add_data(request.build_absolute_uri(url))
     qr.make(fit=True)
-    qr_image = qr.make_image()
+    qr_image = qr.make_image(fill_color="#cb011b")
     buffer = BytesIO()
     qr_image.save(buffer, format='PNG')
     # Create a ContentFile object from the buffer
@@ -241,36 +243,36 @@ def visitcard(request,id):
     context={
         "data":data
     }
-  
-    fullname = data.first_name+"-"+data.last_name
+    return render(request, 'visitcard.html', context)
+    # fullname = data.first_name+"-"+data.last_name
     # hti.screenshot(
     # html_file='qr_card_app/templates/qrcode.html',
     # save_as=f'{fullname}-card.png'
 # )
     
         # Render the template to HTML string
-    html_string = render_to_string('visitcard.html', context)
+    # html_string = render_to_string('visitcard.html', context)
 
 # File paths
     # output_pdf = os.path.join(settings.BASE_DIR, f'qr_card_app/media/visiting_cards/{fullname}-card.pdf')
-    output_png = os.path.join(settings.BASE_DIR, f'qr_card_app/media/visiting_cards/{fullname}-card.png')
+    # output_png = os.path.join(settings.BASE_DIR, f'qr_card_app/media/visiting_cards/{fullname}-card.png')
 
-    # Generate PDF using wkhtmltopdf
-    command = ['wkhtmltoimage', '-', output_png]
-    subprocess.run(command, input=html_string, check=True, text=True, capture_output=True)
+    # # Generate PDF using wkhtmltopdf
+    # command = ['wkhtmltoimage', '-', output_png]
+    # subprocess.run(command, input=html_string, check=True, text=True, capture_output=True)
 
-    # # Convert PDF to PNG using ImageMagick (requires installation of ImageMagick)
-    # subprocess.run(['convert', '-density', '300', output_pdf, '-quality', '100', output_png], check=True)
+    # # # Convert PDF to PNG using ImageMagick (requires installation of ImageMagick)
+    # # subprocess.run(['convert', '-density', '300', output_pdf, '-quality', '100', output_png], check=True)
 
-    # Delete the temporary PDF file
-    # os.remove(output_pdf)
+    # # Delete the temporary PDF file
+    # # os.remove(output_pdf)
 
-    # Return the PNG file as a response
-    with open(f'/home/punit/workspace/python/qr_data/qr_card_app/media/visiting_cards/{fullname}-card.png', 'r+b') as f:
-        response = HttpResponse(f.read(), content_type='image/png')
+    # # Return the PNG file as a response
+    # with open(f'/qr_card_app/media/visiting_cards/{fullname}-card.png', 'r+b') as f:
+    #     response = HttpResponse(f.read(), content_type='image/png')
 
-    response['Content-Disposition'] = f'attachment; filename= "{fullname}-card.png" '
-    return response
+    # response['Content-Disposition'] = f'attachment; filename= "{fullname}-card.png" '
+    # return response
 
 
-        
+

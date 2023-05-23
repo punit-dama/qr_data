@@ -1,36 +1,42 @@
+{%load static%}
+
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
-  <style>
-    .business-card {
-      width: 1098px;
-      height: 648px;
-      background-color: #ffffff;
-      border: 1px solid #000000;
-      padding: 20px;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    .business-card h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .business-card p {
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/visitcard.css'%}">
+    <title>Metro Brands</title>
 </head>
 <body>
-  <div class="business-card">
-    <h1>{{ data.first_name}} {{data.last_name}}</h1>
-    <p>{{ data.designation }}</p>
-    <p>{{ data.company_name }}</p>
-    <p>{{ data.phone }}</p>
-    <p>{{ data.email }}</p>
-    {% comment %} <p><img src="{{data.qr_code.url}}"></p> {% endcomment %}
-  </div>
+    <div class="card">
+            <div class="header-card">
+                <img class="mbLogo" src="{%static 'css/icons/metrobrandslogobig.png'%}"><img src="{{data.qr_code.url}}" class="qrcode" width="100px" height="100px"></span>
+            </div>
+
+        <div class="holder-name">
+            <div class="holder-child">
+                <span style="color: #cb011b; font-size: large;">{{data.first_name}} {{data.last_name}}</span><br>
+                <span style="margin-left: 2px;">{{data.designation}}</span>
+            </div>
+        </div>
+
+         <div class="card-info">
+             <p class="add-name">Metro Brands</p>
+            <div class="card-add">
+               
+            <span class="card-data">
+                401, Kanakia Zillion, <br>LBS Marg and CST Road,<br> Kurla West, Junction,<br> Mumbai - 400077, India.</span>
+            <span class="contact">
+                <p>T : <span>+91 22 6656 0444</span></p>
+                <p>M  : <span>+91 {{data.phone}}</span></p>
+                <p>E  : <span>{{data.email}}</span></p>
+            </span>
+            </div>
+            <div class="card-tel"></div>
+         </div>
+    </div>
 </body>
 </html>

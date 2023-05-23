@@ -20,6 +20,5 @@ urlpatterns = [
     path('search/', search, name='search'),
     path('withmobile/<int:id>', withmobile, name='withmobile'),
     path('withoutmobile/<int:id>', withoutmobile, name='withoutmobile'),
-    path('visitcard/<int:id>', visitcard, name='visitcard'),
-    # path('createqr/<int:id>/',createqr, name='createqr'),
+    path('visitcard/<int:id>', visitcard, name='visitcard')
 ]
