@@ -10,6 +10,7 @@
         .search-bar {
             width: 200px;
         }
+    
         .options-buttons {
             display: flex;
             justify-content: space-between;
@@ -24,6 +25,7 @@
                border: 4px solid black;
                
               text-align: center;
+
             }
          </style>
     </style>
@@ -118,14 +120,14 @@
                 {% if item.qr_code %}
                 <button style="display: flex; margin:1% 0 " id= "visit"class="btn btn-primary" 
                 onclick="window.location.href = '{% url "visitcard" id=item.id %}';">
-                    Download Visiting Card
+                    Print Visiting Card
                 </button>
                 {% endif%}
     {% endfor %}
     {% if data.id %}
     <button id= "visit"class="btn btn-primary" 
     onclick="window.location.href = '{% url "visitcard" id=data.id %}';">
-        Download Visiting Card
+        Print Visiting Card
     </button>
     {%endif%}
     
