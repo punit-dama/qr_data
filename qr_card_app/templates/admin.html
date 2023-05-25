@@ -3,27 +3,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Page</title>
+    <title>Admin Panel</title>
     <!-- Add Bootstrap CSS link here -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .search-bar {
             width: 200px;
         }
-    
+        
         .options-buttons {
             display: flex;
             justify-content: space-between;
             width: 200px;
         }
         .table, th, td {
-            border: 4px solid black;
+            border: 2px solid black;
             border-style:dashed;
-           text-align: center;
+            text-align: center;
          }
         .table{
-               border: 4px solid black;
-               
+               border: 2px solid black;
+            
               text-align: center;
 
             }
@@ -80,9 +80,9 @@
                 
                 <tr>   
                    <td>{{item.id}}</td>
-                    <td>{{item.first_name }}</td>
+                    <td>{{item.first_name }} {{item.last_name }}</td>
                     {% if item.qr_code %}
-                        <td><a href="{{link}}">{{chost}}{{link}}</a></td>
+                        <td><a style="color:#cb011b" href="{{link}}">{{chost}}{{link}}</a></td>
                         <td><img src="{{item.qr_code.url}}"></td>
                     {% else %}
                         <td>X</td>
@@ -93,21 +93,19 @@
                 {% comment %} {% empty %}
                 <tr>
                     <td colspan="3">No items found.</td>
-                </tr> {% endcomment %}
-                {% if item.id %}
-                      
-                {%endif%}    
+                </tr> {% endcomment %}  
            
             {% endfor %}
+            {% if data.id %}
             <tr>
                 <td>{{data.id}}</td>
                 <td>{{data.first_name }}</td>    
-                <td><a href="{{url}}">{{host}}{{url}}</a></td>
+                <td><a style="color:#cb011b" href="{{url}}">{{host}}{{url}}</a></td>
                 <td><img src="{{data.qr_code.url}}"></td>
                
                 {% comment %} <td><div style="display:flex"> <a href="#" class="btn btn-primary"> Download Visiting card</a></div></td> {% endcomment %}
             </tr>
-            
+            {% endif%}
             </tbody>
         </table>
         {% comment %} {% for item in queryset%} {% endcomment %}
